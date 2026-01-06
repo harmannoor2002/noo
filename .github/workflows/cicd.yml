@@ -1,0 +1,25 @@
+name: Deploy Static Site
+
+on:
+  push:
+    branches:
+      - main   # Run this workflow on push to main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js (optional if you use build tools)
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'  # Required if using npm build tools
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v6
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./   # Root folder of your static site
