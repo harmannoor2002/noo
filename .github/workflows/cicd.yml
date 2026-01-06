@@ -1,21 +1,24 @@
-name: Deploy Static Site
+name: Manual Deploy
 
 on:
-  push:
-    branches:
-      - main  # run workflow when main branch is updated
+  workflow_dispatch:
+    inputs:
+      commit_message:
+        description: "Enter commit message"
+        default: "Manual deploy"
+        required: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy site
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./   # root folder of your site
-          # branch: gh-pages  # optional, defaults to gh-pages
+          publish_dir: ./
+          publish_branch: gh-pages
+          commit_message: ${{ github.event.inputs.commit_message }}
