@@ -1,19 +1,17 @@
 name: Deploy Static Site
 
-# Trigger manually instead of on push
+# Manual trigger only
 on:
-  workflow_dispatch:   # <-- this allows you to trigger from GitHub UI
+  workflow_dispatch:   # <- removes automatic triggers
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Step 2: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
