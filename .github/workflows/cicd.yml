@@ -1,10 +1,9 @@
 name: Deploy Static Site
 
-# Manual trigger only
 on:
   push:
-   branch: - main
-  # <- removes automatic triggers
+    branches:
+      - main  # run workflow when main branch is updated
 
 jobs:
   deploy:
@@ -18,5 +17,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./        # root folder of your site
-          publish_branch: gh-pages
+          publish_dir: ./   # root folder of your site
+          # branch: gh-pages  # optional, defaults to gh-pages
