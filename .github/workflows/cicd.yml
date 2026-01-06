@@ -3,7 +3,7 @@ name: Deploy Static Site
 on:
   push:
     branches:
-      - main  # Run this workflow on push to main branch
+      - main  # run workflow when main branch is updated
 
 jobs:
   deploy:
@@ -13,14 +13,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Optional: if you ever use Node.js build tools
-      #- name: Setup Node.js
-      #  uses: actions/setup-node@v3
-      #  with:
-      #    node-version: '18'
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./   # Root folder of your static site
+          publish_dir: ./   # root folder of your site
+          # branch: gh-pages  # optional, defaults to gh-pages
