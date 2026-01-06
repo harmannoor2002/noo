@@ -3,7 +3,7 @@ name: Deploy Static Site
 # Manual trigger only
 on:
   push:
-   branch: main
+   branch: - main
   # <- removes automatic triggers
 
 jobs:
