@@ -2,7 +2,9 @@ name: Deploy Static Site
 
 # Manual trigger only
 on:
-  workflow_dispatch:   # <- removes automatic triggers
+  push:
+   branch: main
+  # <- removes automatic triggers
 
 jobs:
   deploy:
