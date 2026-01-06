@@ -1,21 +1,22 @@
 name: Deploy Static Site
 
+# Trigger manually instead of on push
 on:
-  push:
-    branches:
-      - main  # run workflow when main branch is updated
+  workflow_dispatch:   # <-- this allows you to trigger from GitHub UI
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # Step 2: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./   # root folder of your site
+          publish_dir: ./        # root folder of your site
           publish_branch: gh-pages
