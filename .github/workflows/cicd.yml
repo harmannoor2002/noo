@@ -14,7 +14,8 @@ jobs:
       - name: Deploy site
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }} #GitHub ka auto-generated token jo repo par commit push branch create
+
           publish_dir: ./
           publish_branch: gh-pages
-          commit_message: ${{ github.event.inputs.commit_message }}
+       
