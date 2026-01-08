@@ -2,11 +2,7 @@ name: Manual Deploy
 
 on:
   workflow_dispatch:
-    inputs:
-      commit_message:
-        description: "Enter commit message"
-        default: "Manual deploy"
-        required: true
+ 
 
 jobs:
   deploy:
